@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
-import ApiContext from '../ApiContext'
+// import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddFolder.css'
 
@@ -10,7 +10,7 @@ export default class AddFolder extends Component {
       push: () => { }
     },
   }
-  static contextType = ApiContext;
+  // static contextType = ApiContext;
 
   handleSubmit = e => {
     e.preventDefault()
