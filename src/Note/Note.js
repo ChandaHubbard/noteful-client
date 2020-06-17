@@ -43,7 +43,7 @@ export default function Note (props) {
       <div className='Note'>
         <h2 className='Note__title'>
           <Link to={`/note/${props.id}`}>
-            {props.name}
+            {props.noteLabel}
           </Link>
         </h2>
         <button
