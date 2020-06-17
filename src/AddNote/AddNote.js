@@ -125,7 +125,7 @@ updateFolder = (folderId) => {
           placeholder="name"
           onChange={e => this.updateLabel(e.target.value)}
           />
-          {this.state.name.touched 
+          {this.state.note_label.touched 
           // && <ValidationError message={nameError} />
           }
         </div>

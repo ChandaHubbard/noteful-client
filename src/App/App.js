@@ -20,9 +20,9 @@ class App extends Component {
     addNote: this.addNote,
     addFolder: this.addFolder,
     updateNote: this.updateNote,
-    // updateFolder: this.updateFolder,
-    // deleteNote: this.deleteNote,
-    // deleteFolder: this.deleteFolder,
+    updateFolder: this.updateFolder,
+    deleteNote: this.deleteNote,
+    deleteFolder: this.deleteFolder,
   };
 
   setNotes(notes) {
@@ -116,8 +116,8 @@ class App extends Component {
             return <NotePageNav {...routeProps} folder={folder} />;
           }}
         />
-        <Route path="/add-folder" component={NotePageNav} />
-        <Route path="/add-note" component={NotePageNav} />
+        <Route path="/add-folder" component={AddFolder} />
+        
       </>
     );
   }
@@ -138,6 +138,8 @@ class App extends Component {
             }}
           />
         ))}
+        <Route path="/add-note" component={AddNote} />
+        
         <Route
           path="/notes/:noteId"
           render={(routeProps) => {
@@ -146,13 +148,14 @@ class App extends Component {
             return <NotePageMain {...routeProps} note={note} />;
           }}
         />
+        
       </>
     );
   }
 
   render() {
     const { notes, folders } = this.state;
-    const { setNotes, setFolders } = this;
+    const { setNotes, setFolders, updateNote, updateFolder, deleteFolder, deleteNote } = this;
     return (
       <ApiContext.Provider value={{ notes, folders, setNotes, setFolders }}>
         <div className="App">
