@@ -71,7 +71,7 @@ class App extends Component {
 
   componentDidMount() {
     // setTimeout(() => this.setState(dummyStore), 600)
-    const baseUrl = "http://localhost:8000";
+    const baseUrl = "https://immense-anchorage-15806.herokuapp.com";
     const notesEndPoint = "/notes";
     const foldersEndPoint = "/folders";
 
