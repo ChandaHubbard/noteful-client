@@ -26,44 +26,59 @@ class App extends Component {
   };
 
   setNotes(notes) {
+    //working
     this.setState((previousState) => ({ notes }));
   }
 
   setFolders(folders) {
+    //working
     this.setState((previousState) => ({ folders }));
   }
 
   addNote = (note) => {
+    //in progress
     this.setState({
       notes: [...this.state.notes, note],
     });
   };
 
-  addFolder = (folder) => {
+  addFolder = folder => {
+    //in progress
     this.setState({
-      folders: [...this.state.folders, folder],
+      folders: [...this.state.folder, folder],
     });
   };
 
-  updateNote = (noteId) => {
+  updateNote = updateNote => {
+    //in progress
+    // const createNotes = this.state.notes.map(note => {(note.id !== updateNote.id)})
     this.setState({
-      notes: this.state.notes.filter((note) => note.id !== noteId),
+      notes: this.state.notes.map(note => (note.id !== updateNote.id) 
+      ? note 
+      : updateNote
+      ),
     });
   };
 
-  updateFolder = (folderId) => {
-    this.setState({
-      folders: this.state.folders.filter((folder) => folder.id !== folderId),
-    });
+  updateFolder = updateFolder => {
+    //in progress
+    // const createFolders = this.state.folders.map(folder => {(updateFolder.id !== folderId) ? folderId : folder})
+    // this.state({ folder: createFolders})
+    // this.setState({
+    //   folders: this.state.folders.filter((folder) => folder.id !== folderId),
+    // });
   };
 
-  deleteNote = (noteId) => {
-    this.setState({
-      notes: this.state.notes.filter((note) => note.id !== noteId),
-    });
+  deleteNote = noteId => {
+    //in progress
+    const createNotes = this.state.notes.filter(note => note.id !== noteId)
+    this.setState({ notes: createNotes })
   };
 
-  deleteFolder = (folderId) => {
+  deleteFolder = folderId => {
+    //in progress, might delete
+    const createFolders = this.state.folders.filter(folder => folder.id !== folderId)
+    this.setState({ folders: createFolders})
     this.setState({
       folders: this.state.folders.filter((folder) => folder.id !== folderId),
     });
