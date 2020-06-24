@@ -8,30 +8,17 @@ import ApiContext from '../ApiContext'
 import './NoteListMain.css'
 
 export default function NoteListMain(props) {
-  // static defaultProps = {
-  //   match: {
-  //     params: {}
-  //   }
-  // }
-  // static contextType = ApiContext
-
-  // render() {
-  //   const { folderId } = this.props.match.params
-  //   const { notes=[] } = this.context
-  //   const notesForFolder = getNotesForFolder(notes, folderId)
     return (
       <ApiContext.Consumer>
       {
-        props => (
+        value => (
           <section className='NoteListMain'>
-        
         <ul>
-          {props.notes.map(note =>
+          {value.notes.map((note) =>
             <li key={note.id}>
               <Note
                 id={note.id}
-                noteLabel={note.note_label}
-                // modified={note.modified}
+                name={note.note_label}
               />
             </li>
           )}
@@ -54,8 +41,3 @@ export default function NoteListMain(props) {
       </ApiContext.Consumer>
     )
   }
-// }
-
-NoteListMain.defaultProps = {
-  notes: [],
-}

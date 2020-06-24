@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
-// import ErrorBoundary from '../ErrorBoundary'
-// import ValidationError from "../ValidationError"
 import config from '../config'
 import './AddFolder.css'
 
@@ -13,12 +11,8 @@ export default class AddFolder extends Component {
     constructor(props) {
       super(props) 
         this.state = {
-          folder: {
-            value: '',
-            touched: false
-          },
+          folder: '',
           error: null,
-          formValid: false,
           errors: {
             folder: 'You must enter a folder title'
           }
@@ -26,40 +20,22 @@ export default class AddFolder extends Component {
     }
 
     updateFolderName(folder) {
-      this.setState({ folder: { value: folder, touched: true} })
+      this.setState({ folder })
     }
-
-    // validateFolderName() {
-    //   const folderName = this.state.folder.value.trim()
-    //   if (folderName.length < 3) {
-    //     return 'Folder folder must be at least 3 characters long'
-    //   } else if (folderName.length === 0) {
-    //     return 'Folder folder is required'
-    //   } else if (folderName === 'folder') {
-    //     return folderName
-    //   }
-    // }
-
-    // handleChange = event => {
-    //   const { folder, value } = event.target
-    //   this.setState({ [folder] : value })
-    //   this.validateFolderName(folder, value)
-    // }
 
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { folder } = {
-       folder: event.target['folder-name'].value
-    }
+    const { folder } = this.state
+    console.log(folder, "folder")
+    console.log(JSON.stringify({folder}), "folder string" )
 
-    this.setState({ error: null })
     fetch(`${config.API_ENDPOINT}/folders`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(folder),
+      body: JSON.stringify({folder}),
     })
       .then(res => {
         if (!res.ok)
@@ -84,7 +60,6 @@ export default class AddFolder extends Component {
   render() {
     const error = this.state
     return (
-      // <ErrorBoundary>
         <div className='add-folder'>
           <h2>Create a folder</h2>
           <NotefulForm onSubmit={event => this.handleSubmit(event)}>
@@ -103,7 +78,6 @@ export default class AddFolder extends Component {
           onChange={event => this.updateFolderName(event.target.value)}
           />
         </div>
-        {/* {this.state.title.touched && <ValidationError message={folderError} />} */}
         <div className='buttons'>
           <button 
           type="button" 
@@ -112,7 +86,7 @@ export default class AddFolder extends Component {
             <button 
           type='submit'
           id="submit-button"
-          // disabled={this.validateFolderName}
+       
           >
             + Add folder
           </button>

@@ -7,7 +7,7 @@ import NoteListMain from "../NoteListMain/NoteListMain";
 import NotePageMain from "../NotePageMain/NotePageMain";
 import AddFolder from "../AddFolder/AddFolder";
 import AddNote from "../AddNote/AddNote";
-// import dummyStore from '../dummy-store'
+
 import ApiContext from "../ApiContext";
 // import config from '../config'
 import { getNotesForFolder, findNote, findFolder } from "../notes-helper";
@@ -61,12 +61,7 @@ class App extends Component {
   };
 
   updateFolder = updateFolder => {
-    //in progress
-    // const createFolders = this.state.folders.map(folder => {(updateFolder.id !== folderId) ? folderId : folder})
-    // this.state({ folder: createFolders})
-    // this.setState({
-    //   folders: this.state.folders.filter((folder) => folder.id !== folderId),
-    // });
+  
   };
 
   deleteNote = noteId => {
@@ -84,7 +79,18 @@ class App extends Component {
     });
   };
 
+  getNoteById = () => {
+    fetch(`https://immense-anchorage-15806.herokuapp.com/notes/1`)
+    .then(res => res.json()).then(data => {
+      console.log(data, "notes with id 1")
+    }).catch(error => {
+      console.log(error, "error")
+    })
+
+  }
+
   componentDidMount() {
+    this.getNoteById()
     // setTimeout(() => this.setState(dummyStore), 600)
     const baseUrl = "https://immense-anchorage-15806.herokuapp.com";
     const notesEndPoint = "/notes";
@@ -102,6 +108,8 @@ class App extends Component {
         return Promise.all([notesRes.json(), foldersRes.json()]);
       })
       .then(([notes, folders]) => {
+        console.log(notes, "app.js notes")
+        console.log(folders, "app.js folders")
         this.setState({ notes, folders });
       })
       .catch((error) => {

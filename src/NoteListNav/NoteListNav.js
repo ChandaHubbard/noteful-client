@@ -16,7 +16,9 @@ export default function NoteListNav() {
       {  props => (
         <div className='NoteListNav'>
         <ul className='NoteListNav__list'>
-          {props.folders.slice(0, 5).map(folder =>
+          {props.folders
+          // .slice(0, 5)
+          .map(folder =>
             <li key={folder.id}>
               <NavLink
                 className='NoteListNav__folder-link'
