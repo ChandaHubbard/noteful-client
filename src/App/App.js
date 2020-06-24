@@ -9,7 +9,6 @@ import AddFolder from "../AddFolder/AddFolder";
 import AddNote from "../AddNote/AddNote";
 
 import ApiContext from "../ApiContext";
-// import config from '../config'
 import { getNotesForFolder, findNote, findFolder } from "../notes-helper";
 import "./App.css";
 
@@ -51,7 +50,6 @@ class App extends Component {
 
   updateNote = updateNote => {
     //in progress
-    // const createNotes = this.state.notes.map(note => {(note.id !== updateNote.id)})
     this.setState({
       notes: this.state.notes.map(note => (note.id !== updateNote.id) 
       ? note 
@@ -82,7 +80,7 @@ class App extends Component {
   getNoteById = () => {
     fetch(`https://immense-anchorage-15806.herokuapp.com/notes/1`)
     .then(res => res.json()).then(data => {
-      console.log(data, "notes with id 1")
+      return data
     }).catch(error => {
       console.log(error, "error")
     })
@@ -136,7 +134,9 @@ class App extends Component {
             const { noteId } = routeProps.match.params;
             const note = findNote(notes, noteId) || {};
             const folder = findFolder(folders, note.folderId);
-            return <NotePageNav {...routeProps} folder={folder} />;
+            return <NotePageNav 
+            // {...routeProps} 
+            folder={folder} />;
           }}
         />
         <Route path="/add-folder" component={AddFolder} />
@@ -168,9 +168,11 @@ class App extends Component {
           render={(routeProps) => {
             const { noteId } = routeProps.match.params;
             const note = findNote(notes, noteId);
+            console.log(this.state.notes, "routeprops")
             return <NotePageMain {...routeProps} note={note} />;
           }}
         />
+       
         
       </>
     );

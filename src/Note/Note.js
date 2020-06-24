@@ -30,14 +30,15 @@ export default function Note (props) {
   
 // render() {
     return (
-      // <ApiContext.Consumer>
-      // {context => (
+    
         <div className='Note'>
-        <h2 className='Note__title'>
+        <h5 className='Note__title'>
           <Link to={`/notes/${props.id}`}>
-            <p>{props.name}</p>
+            <h5>{props.name}</h5>
+     
           </Link>
-        </h2>
+          </h5>
+          {/* <p>{props.content}</p> */}
         <button
           className='Note__delete'
           type='button'>
@@ -45,19 +46,7 @@ export default function Note (props) {
           {' '}
           remove
         </button>
-        <div className='Note__dates'>
-          {/* <div className='Note__dates-modified'>
-            Modified
-            {' '}
-            <span className='Date'>
-              {format(props.modified, 'Do MMM YYYY')}
-            </span>
-          </div> */}
-        </div>
       </div>
       )
-    // }
-     // </ApiContext.Consumer>
-    // )
-// }
+
 }

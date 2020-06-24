@@ -101,8 +101,7 @@ export default class AddFolder extends Component {
       >
       Go Back
       </CircleButton>
-      </div>
-      // </ErrorBoundary>       
+      </div>      
     )
   }
 }
@@ -113,11 +112,3 @@ AddFolder.defaultProps = {
     goBack: () => {}
   }
 }
-
-// AddFolder.propTypes = {
-//   folders: PropTypes.array,
-//   folder: PropTypes.string.isRequired,
-//   id: PropTypes.string,
-//   content: PropTypes.string,
-//   // modified: PropTypes.string,
-// }

@@ -19,6 +19,7 @@ export default function NoteListMain(props) {
               <Note
                 id={note.id}
                 name={note.note_label}
+                content={note.content}
               />
             </li>
           )}
