@@ -89,7 +89,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getNoteById()
-    // setTimeout(() => this.setState(dummyStore), 600)
     const baseUrl = "https://immense-anchorage-15806.herokuapp.com";
     const notesEndPoint = "/notes";
     const foldersEndPoint = "/folders";
@@ -146,7 +145,7 @@ class App extends Component {
   }
 
   renderMainRoutes() {
-    const { notes, folders } = this.state;
+    const notes = this.state;
     return (
       <>
         {["/", "/folder/:folderId"].map((path) => (
@@ -180,7 +179,7 @@ class App extends Component {
 
   render() {
     const { notes, folders } = this.state;
-    const { setNotes, setFolders, updateNote, updateFolder, deleteFolder, deleteNote } = this;
+    const { setNotes, setFolders } = this;
     return (
       <ApiContext.Provider value={{ notes, folders, setNotes, setFolders }}>
         <div className="App">
