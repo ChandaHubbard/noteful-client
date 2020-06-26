@@ -1,0 +1,13 @@
+get note by id
+    * view
+    * edit button
+    * click on note that you want to update
+    * go to input box with note information
+    * update note information, by editing fields
+    * submit and confirm note edits
+
+-update folder
+-delete notes
+    * find note
+    * click 'delete' button
+    * change view, to show that note has been removed
