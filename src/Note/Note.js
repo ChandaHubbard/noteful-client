@@ -4,6 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Note.css'
 
 export default function Note (props) {
+const deleteNote = (id) => {
+  fetch(`https://immense-anchorage-15806.herokuapp.com/notes/${id}`, {
+    method: "DELETE",
+    headers: { 'content-type': 'application/json' }
+  })
+  .then(res => res.json()).then(data => {
+    return data
+  }).catch(error => {
+    console.log(error, "error")
+  })
+} 
     return (
 
         <div className='Note'>

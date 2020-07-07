@@ -84,7 +84,6 @@ class App extends Component {
     }).catch(error => {
       console.log(error, "error")
     })
-
   }
 
   componentDidMount() {
@@ -145,7 +144,7 @@ class App extends Component {
   }
 
   renderMainRoutes() {
-    const notes = this.state;
+    const { notes } = this.state;
     return (
       <>
         {["/", "/folder/:folderId"].map((path) => (
@@ -154,9 +153,9 @@ class App extends Component {
             key={path}
             path={path}
             render={(routeProps) => {
-              const { folderId } = routeProps.match.params;
-              const notesForFolder = getNotesForFolder(notes, folderId);
-              return <NoteListMain {...routeProps} notes={notesForFolder} />;
+              // const { folderId } = routeProps.match.params;
+              // const notesForFolder = getNotesForFolder(notes, folderId);
+              return <NoteListMain {...routeProps} />;
             }}
           />
         ))}
@@ -167,11 +166,11 @@ class App extends Component {
           render={(routeProps) => {
             const { noteId } = routeProps.match.params;
             const note = findNote(notes, noteId);
+
             console.log(this.state.notes, "routeprops")
             return <NotePageMain {...routeProps} note={note} />;
           }}
         />
-       
         
       </>
     );
